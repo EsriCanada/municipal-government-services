@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset=utf-8>
+    <!--ENGLISH
+	 | Version 10.2
+	 | Copyright 2012 Esri
+	 |
+	 | ArcGIS for Canadian Municipalities / ArcGIS pour les municipalités canadiennes
+	 | My Municipal Government Services v10.2.0 / Mes services municipaux v10.2.0
+	 | This file was modified by Esri Canada - Copyright 2013 Esri Canada
+	 |
+	 |
+	 | Licensed under the Apache License, Version 2.0 (the "License");
+	 | you may not use this file except in compliance with the License.
+	 | You may obtain a copy of the License at
+	 |
+	 |    http://www.apache.org/licenses/LICENSE-2.0
+	 |
+	 | Unless required by applicable law or agreed to in writing, software
+	 | distributed under the License is distributed on an "AS IS" BASIS,
+	 | WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 | See the License for the specific language governing permissions and
+	 | limitations under the License.
+    -->
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Municipal Government Services</title>
+	<link rel="icon" type="image/png" href="images/favicon.png">
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/appIcon.png">
+    <link rel="apple-touch-icon-precomposed" href="images/appIcon.png">
+    <link id="stylesheet" href='http://serverapi.arcgisonline.com/jsapi/arcgis/3.5/js/dojo/dojox/mobile/themes/iPhone/iPhone.css' rel='stylesheet'>
+    <link href="styles/myGovServices.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.5/js/esri/css/esri.css">
+    <link rel="Stylesheet" id="dynamicStyleSheet">
+    <script type="text/javascript">
+        var dojoConfig = {
+            async: false,
+            parseOnLoad: true,
+            mblHideAddressBar: false,
+            packages:[
+                {name:"js",location:location.pathname.replace(/\/[^/]+$/, '') + '/js'}
+            ],
+			extraLocale: ['fr','en']
+            };
+    </script>
+    <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.5compact" type="text/javascript"></script>
+    <script src="js/internationalization.js" type="text/javascript"></script>
+    <script src="js/infoWindow.js" type="text/javascript"></script>
+    <script src="js/baseMapGallery.js" type="text/javascript"></script>
+    <script src="js/modernizr-2.5.3.js" type="text/javascript"></script>
+    <script src="js/locator.js" type="text/javascript"></script>
+    <script src="js/utils.js" type="text/javascript"></script>
+    <script src="js/date.js" type="text/javascript"></script>
+    <script src="js/carousel.js" type="text/javascript"></script>
+    <script src="js/homePage.js" type="text/javascript"></script>
+    <script src="js/route.js" type="text/javascript"></script>
+</head>
+<body onorientationchange="orientationChanged();">
+    <div id="divSplashScreenContainer" class="divSplashScreenContainer" style="display: none;">
+		<div id="divSplashScreenContainerInner">
+			<div id="divSplashScreenContent" class="hideContainer divSplashScreenContent">
+				<div id="divSplashContainer" class="divSplashContainer" style="margin-top: 10px;">
+				</div>
+				<div id="closeSplash" style="width: 75px;" class="customButton" onclick="HideSplashScreenMessage();" onkeyup="accessClick(event,'HideSplashScreenMessage',null);" tabindex="1" role="button">
+				</div>
+			</div>
+		</div>
+    </div>
+    <div id="listDatacontent">
+    </div>
+	<div id="bodyContainer" aria-busy="true">
+		<!--HEADER-->
+		<div id="divApplicationHeader" onclick="clearAutocomplete();">
+			<div id="divButtons">
+				<!--ADDRESS SEARCH-->
+				<img id="imgSearch" alt="" src="images/locate.png" class="imgOptions" onclick="showHideSearch(false);" onkeyup="accessClick(event,'showHideSearch',false);" tabindex="0" role="button" style="display:none;" aria-expanded="false">
+				<div id="divAddressSearch" class="searchInline" style="display:none;">
+					<span id="searchTitle" style="display:none;"></span>
+					<form action="javascript:void(0);" onsubmit="LocateAddressCML2(false)">
+						<input id="searchInput" type="text" autocomplete="off" required onkeyup="LocateAddressCML2(true,event);selectAutocomplete(event);"><input id="searchSubmit" type="submit" value=" ">
+						<span id="autocompleTitle" style="display:none;"></span>
+						<div id="autocomplete">
+						</div>
+					</form>
+				</div>
+				<!--GEOLOCATE-->
+				<img id="imgGeolocate" alt="" src="images/geolocation.png" class="imgOptions" onclick="ShowMyLocation();" onkeyup="accessClick(event, 'ShowMyLocation', null);" tabindex="0" role="button">
+				<!--BASEMAP (CONTAINER MOVED FOR CanAccess WCAG2.0)-->
+				<img id="imgBaseMap" alt="" src="images/basemap.png" class="imgOptions" onclick="ShowBaseMaps();" onkeyup="accessClick(event,'ShowBaseMaps',null);" style="display:none;" tabindex="0" role="button" aria-expanded="false">
+				<div id="divLayerContainer" class="divLayerContainer hideContainerHeight" style="display:none;"  aria-live="off">
+					<div id="divLayerContentHolder" class="divLayerContentHolder">
+						<div id="layerList">
+						</div>
+					</div>
+				</div>
+				<!--SHARE (CONTAINER MOVED FOR CanAccess WCAG2.0)-->
+				<img id="imgShare" alt="" src="images/share.png" class="imgOptions" onclick="ShareLink(true);" onkeyup="accessClick(event,'ShareLink',true);" tabindex="0" role="button" aria-expanded="false">
+				<div id="divAppContainer" class="divAppContainer hideContainerHeight" aria-live="off" style="display:none;">
+					<div id="shareTitle"></div>
+					<img id="imgFacebook" alt="" src="images/img_facebook.png" class="imgShare" onclick="Share('facebook')" onkeyup="accessClick(event,'Share','facebook');" tabindex="-1" role="button">
+					<img id="imgTwitter" alt="" src="images/img_twitter.png" class="imgShare" onclick="Share('twitter')" onkeyup="accessClick(event,'Share','twitter');" tabindex="-1" role="button">
+					<img id="imgMail" alt="" src="images/img_email.png" class="imgShare" onclick="Share('mail')" onkeyup="accessClick(event,'Share','mail');" tabindex="-1" role="button">
+				</div>
+				<!--HELP-->
+				<img id="imgHelp" alt="" src="images/help.png" class="imgOptions" tabindex="0" role="button">
+				<!--LANGUAGE BUTTON-->
+				<img id="imgLang" alt="" src="" title="" class="imgOptions" tabIndex="0" role="button" style="width:auto !important; display:none;">
+			</div>
+			<div id="divHeaderTitle">
+			</div>
+		</div>
+		<div id="divInfowindowContent" class="divInfowindowContent" style="display: none" onclick="clearAutocomplete();">
+			<table class="infotblHeader" style="width: 100%;">
+				<tr style="height: 30px;" align="center" valign="top">
+					<td id="tdTitle" class="tdHeader" align="left" valign="middle" style="padding-left: 8px;">
+					</td>
+					<td align="right" style="width: 10%;">
+						<img id="popupClose" src="images/close.png" class="imgOptions"onclick="HideInformationContainer();" onkeyup="accessClick(event,'HideInformationContainer',null);" tabindex="0" alt="">
+					</td>
+				</tr>
+			</table>
+			<div id="divInfoContainer" class="divInfoDataContainer">
+				<div id="divInfoContent" class="divInfoDataContent">
+				</div>
+			</div>
+		</div>
+		<div id="divMainContainer" dojotype="dojox.mobile.View" selected="true" onclick="clearAutocomplete();">
+			<div id="mapNavigation" style="display:none;">
+				<strong></strong><br>
+				<figure>
+					<img src="images/keyboardNavigation.png" alt="">
+					<figcaption></figcaption>
+				</figure>
+			</div>
+			<div id="crosshair" style="position: absolute; color:black; z-index:1000; font-size:xx-large; width:26px;height:40px; display:none;"><img alt="" src="images/crosshair.png"></div>
+			<div id="accessForward" tabindex="0" style="visibility:0px; height:0px; width:0px;"></div> <!--CanAccess TAB DETECTOR-->
+			<div id="map" tabindex="-1" role="application">
+			</div>
+			<div id="accessBackward" tabindex="0" style="visibility:0px; height:0px; width:0px;"></div> <!--CanAccess TAB DETECTOR-->
+		</div>
+		<div id="divLoadingIndicator" class="divLoadingIndicator" style="display: block;">
+			<table style="width: 100%; height: 100%;">
+				<tr align="center" valign="middle">
+					<td>
+						<img src="images/loader.gif" alt="">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="divMobileContainerView" class="opacityHideAnimation divMobileContainerView" style="display: none;">
+			<table style="width: 100%; height: 100%;">
+				<tr align="center" valign="middle">
+					<td>
+						<div id="divMobileContainerDetails" class="hideContainer divMobileContainerDetails">
+							<table class="tblHeader" style="width: 100%;">
+								<tr style="height: 30px;" align="center" valign="top">
+									<td id="tdListHeader" class="tdHeader" align="left" valign="middle" style="width: 93%">
+									</td>
+									<td style="width: 10%">
+										<table cellpadding="0" cellspacing="0">
+											<tr>
+												<td align="right">
+													<img id="menuList" src="images/menu.png" class="imgOptions" style="cursor: pointer; display: none;">
+												</td>
+												<td align="right">
+													<img id="pointMenuList" src="images/menu.png" class="imgOptions" style="display: none;">
+												</td>
+												<td align="right">
+													<img id="goBack" src="images/goBack.png" class="imgOptions" style="display: none;">
+												</td>
+												<td align="right">
+													<img id="getDirection" src="images/getDirection.png" title="Get directions" class="imgOptions" style="display: none;">
+												</td>
+												<td align="right">
+													<img src="images/close.png" class="imgOptions" onclick="HideMainContainer();">
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<div id="divListContainer">
+								<div id="divDataListContainer" class="divDataListContainer">
+									<div id="divDataListContent" class="divDataListContent">
+										<ul id="listContainer" dojotype="dojox.mobile.EdgeToEdgeList">
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div align="center" id="divRepresentativeDataContainer" class="divRepresentativeDataContainer" style="width: 100%; display: none;">
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
