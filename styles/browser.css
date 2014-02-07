@@ -30,8 +30,8 @@ body, html
  
 /*---------------------------------------------------------------------------------------------------------*/
 /* Styles for map*/
-#divMainContainer {
-	top:45px;
+.esriSimpleSliderTL {
+	top: 65px;
 }
 
 #mapNavigation {

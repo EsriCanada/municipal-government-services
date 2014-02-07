@@ -10,7 +10,7 @@ The application is highly configurable and works with the [Canadian Municipal Da
 A preview of this application is available in [English](http://apps.esri.ca/MunicipalServices/ "Try it live") and [French](http://apps.esri.ca/MunicipalServices/fr "Essayer l'application en français").
 
 ### Required Software & Data
-To run this application on your own server, you will require the software listed below along with the latest version of the [Canadian Municipal Data Model](http://www.arcgis.com/home/item.html?id=0487111bd16a4c2ca757687d588aa783 "Download the Data Model") populated with data. Alternatively, you may [download sample data](http://www.arcgis.com/home/item.html?id=cce7b61da118417aa4e36696969698cb).
+To run this application on your own server, you will require the software listed below along with the latest version of the [Canadian Municipal Data Model](http://www.arcgis.com/home/item.html?id=0487111bd16a4c2ca757687d588aa783 "Download the Data Model") populated with data. Alternatively, you may [download sample data](http://www.arcgis.com/home/item.html?id=b03c14cb96d44608a245b7d6dc84256a).
 
 - ArcGIS for Desktop 10.2 – Standard or Advanced
 - ArcGIS for Server 10.2 - Standard or Advanced, or an ArcGIS Online organizational account

@@ -358,7 +358,7 @@ function Share(site) {
         switch (site) {
             case "facebook":
 				ShareURL = mapSharingOptions.FacebookShareURL + "?";
-				ShareURL += dojo.objectToQuery({u:tinyUrl, t: mapSharingOptions.FacebookText});
+				ShareURL += dojo.objectToQuery({u:tinyUrl});
                 window.open(ShareURL);
                 break;
             case "twitter":

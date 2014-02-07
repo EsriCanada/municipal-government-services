@@ -45,9 +45,10 @@ body, html
 /*---------------------------------------------------------------------------------------------------------*/
 /* Styles for map*/
 #divMainContainer {
-	position:absolute;
 	width:100%;
-	bottom:0px;
+	height: 100%; /*Also set in browser.css*/
+	top:0px;
+	position:absolute;
 }
 #map {
 	width: 100%;
@@ -396,6 +397,7 @@ body, html
 	width:228px;
 	border: thin dimgray solid;
 	font-size:16px;
+	color: black;
 }
 
 #autocomplete {
@@ -429,7 +431,7 @@ body, html
 	background-color: white;
 	border: thin dimgray solid;
 	width: 20px;
-	height: 23px;
+	height: 1%;
 	font-size:16px;
 }
 
