@@ -2,7 +2,7 @@
 /**
  |
  | ArcGIS for Canadian Municipalities / ArcGIS pour les municipalités canadiennes
- | My Municipal Government Services v10.2.0 / Mes services municipaux v10.2.0
+ | My Municipal Government Services v10.2.0.1 / Mes services municipaux v10.2.0.1
  | This file was written by Esri Canada - Copyright 2013 Esri Canada
  |
  |
