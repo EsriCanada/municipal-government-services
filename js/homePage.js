@@ -489,6 +489,10 @@ function MapInitFunction() {
     gLayer.id = highlightPollLayerId;
     map.addLayer(gLayer);
 
+	var repentignyMap = new esri.layers.ArcGISTiledMapServiceLayer("http://tiles.arcgis.com/tiles/8Pk4EchG5TkSh4AO/arcgis/rest/services/Carte_de_Base_Repentigny_juillet2013_v3/MapServer");
+	repentignyMap.id="repentignyMap";
+    map.addLayer(repentignyMap);
+	
     routeParams = new esri.tasks.RouteParameters();
     routeParams.stops = new esri.tasks.FeatureSet();
     routeParams.returnRoutes = false;
@@ -605,9 +609,7 @@ function GetServices(evt, share) {
             map.getLayer(tempGraphicsLayerId).clear();
             mapPoint = new esri.geometry.Point(evt.mapPoint.x, evt.mapPoint.y, map.spatialReference);
             map.centerAndZoom(mapPoint, zoomLevel);
-			if (!isMobileDevice) {
-				SelectedPointAddress();
-			}
+			SelectedPointAddress();
         }
     }
     ShowProgressIndicator();
@@ -623,7 +625,7 @@ function GetServices(evt, share) {
 function CallOutAddressDisplay(evt) {
 	function successfulReverseMb(candidate) {
         if (candidate.address) {
-            var infoData = new esri.Graphic(candidate.location, candidate.address, infoTemplate).symbol.Address;
+            var infoData = new esri.Graphic(candidate.location, candidate.address, infoTemplate).symbol.Street;
             if (infoData !== null) {
                 infoContent = dojo.string.substitute(infoData).trimString(16);
                 map.infoWindow.setContent(infoContent);
