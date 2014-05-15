@@ -489,10 +489,6 @@ function MapInitFunction() {
     gLayer.id = highlightPollLayerId;
     map.addLayer(gLayer);
 
-	var repentignyMap = new esri.layers.ArcGISTiledMapServiceLayer("http://tiles.arcgis.com/tiles/8Pk4EchG5TkSh4AO/arcgis/rest/services/Carte_de_Base_Repentigny_juillet2013_v3/MapServer");
-	repentignyMap.id="repentignyMap";
-    map.addLayer(repentignyMap);
-	
     routeParams = new esri.tasks.RouteParameters();
     routeParams.stops = new esri.tasks.FeatureSet();
     routeParams.returnRoutes = false;

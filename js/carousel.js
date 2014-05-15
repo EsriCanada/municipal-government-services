@@ -763,8 +763,7 @@ function CreateServicePointInfo(service, feature, key, distance, featureGeometry
 				tdContent += feature[service.FieldNames[i].FieldName]
 			}
 			if (i == 0) {
-				tdContent = "<h3>" + tdContent + "</h3>";
-				//tdContent = "<h3>" + tdContent + " (" + FormatDistance(distance, unitConfig.DirectionsLengthLabel) + ")</h3>";
+				tdContent = "<h3>" + tdContent + " (" + FormatDistance(distance, unitConfig.DirectionsLengthLabel) + ")</h3>";
 				if (!isMobileDevice) {
 					tdData.setAttribute("onclick","goToFeature(" + String(featureGeometry.x) + "," + String(featureGeometry.y) + ",'" + key + "');");
 					tdData.setAttribute("onkeyup","if (event.keyCode == dojo.keys.ENTER || event.keyCode == dojo.keys.SPACE) {goToFeature(" + String(featureGeometry.x) + "," + String(featureGeometry.y) + ",'" + key + "');}");
