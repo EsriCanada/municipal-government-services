@@ -605,9 +605,7 @@ function GetServices(evt, share) {
             map.getLayer(tempGraphicsLayerId).clear();
             mapPoint = new esri.geometry.Point(evt.mapPoint.x, evt.mapPoint.y, map.spatialReference);
             map.centerAndZoom(mapPoint, zoomLevel);
-			if (!isMobileDevice) {
-				SelectedPointAddress();
-			}
+			SelectedPointAddress();
         }
     }
     ShowProgressIndicator();
@@ -623,7 +621,7 @@ function GetServices(evt, share) {
 function CallOutAddressDisplay(evt) {
 	function successfulReverseMb(candidate) {
         if (candidate.address) {
-            var infoData = new esri.Graphic(candidate.location, candidate.address, infoTemplate).symbol.Address;
+            var infoData = new esri.Graphic(candidate.location, candidate.address, infoTemplate).symbol.Street;
             if (infoData !== null) {
                 infoContent = dojo.string.substitute(infoData).trimString(16);
                 map.infoWindow.setContent(infoContent);
