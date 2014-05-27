@@ -5,6 +5,14 @@ The My Municipal Government Services application helps residents locate a munici
 
 The application is highly configurable and works with the [Canadian Municipal Data Model](http://www.arcgis.com/home/item.html?id=0487111bd16a4c2ca757687d588aa783 "Download the Data Model").  It can be deployed and used on desktop, smartphones or tablet devices.
 
+### En français
+Vous trouverez la documentation en français dans la [gallérie d’ArcGIS Online](http://www.arcgis.com/home/item.html?id=b03c14cb96d44608a245b7d6dc84256a).
+
+### Full Download
+If you want to deploy this application, please download the full zip file from the [ArcGIS Online item](http://www.arcgis.com/home/item.html?id=b03c14cb96d44608a245b7d6dc84256a), which includes other necessary files such as help documentation, map documents, tools, and sample data.
+
+This GitHub repository is meant mainly for developers who wish to compare code between versions or those who wish to submit code.
+
 ### Try it Live
 
 A preview of this application is available in [English](http://apps.esri.ca/MunicipalServices/ "Try it live") and [French](http://apps.esri.ca/MunicipalServices/fr "Essayer l'application en français").
