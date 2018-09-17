@@ -1,38 +1,20 @@
-### municipal-government-services
-## ArcGIS for Canadian Municipalities - My Municipal Government Services 10.2
+## municipal-government-services
 
-The My Municipal Government Services application helps residents locate a municipal facility and obtain information about municipal services such as recycling and waste pickup schedules.
+### English
 
-The application is highly configurable and works with the [Canadian Municipal Data Model](http://www.arcgis.com/home/item.html?id=0487111bd16a4c2ca757687d588aa783 "Download the Data Model").  It can be deployed and used on desktop, smartphones or tablet devices.
+__This product has been deprecated and must no longer be deployed.__ Technical support will no longer be provided for new deployments.
 
-### En français
-Vous trouverez la documentation en français dans la [gallérie d’ArcGIS Online](http://www.arcgis.com/home/item.html?id=b03c14cb96d44608a245b7d6dc84256a).
+Please consider using [My Neighborhood Services](https://solutions.arcgis.com/local-government/help/my-neighborhood-services/) from ArcGIS Solutions for Local Government.
 
-### Full Download
-If you want to deploy this application, please download the full zip file from the [ArcGIS Online item](http://www.arcgis.com/home/item.html?id=b03c14cb96d44608a245b7d6dc84256a), which includes other necessary files such as help documentation, map documents, tools, and sample data.
+---
 
-This GitHub repository is meant mainly for developers who wish to compare code between versions or those who wish to submit code.
+### Français
 
-### Try it Live
+__Ce produit est désormais obsolète et ne doit plus être déployé.__ Aucune assistance technique ne sera fournie pour des nouveaux déploiement.
 
-A preview of this application is available in [English](http://apps.esri.ca/MunicipalServices/ "Try it live") and [French](http://apps.esri.ca/MunicipalServices/fr "Essayer l'application en français").
+Veuillez considérer [My Neighborhood Services](https://solutions.arcgis.com/local-government/help/my-neighborhood-services/) de «ArcGIS Solutions for Local Government» comme alternative.
 
-### Required Software & Data
-To run this application on your own server, you will require the software listed below along with the latest version of the [Canadian Municipal Data Model](http://www.arcgis.com/home/item.html?id=0487111bd16a4c2ca757687d588aa783 "Download the Data Model") populated with data. Alternatively, you may [download sample data](http://www.arcgis.com/home/item.html?id=b03c14cb96d44608a245b7d6dc84256a).
-
-- ArcGIS for Desktop 10.2 – Standard or Advanced
-- ArcGIS for Server 10.2 - Standard or Advanced, or an ArcGIS Online organizational account
-- Microsoft Internet Information Services (IIS)
-- Microsoft ASP.Net Framework 4.0
-
-### Issues
-
-Find a bug or want to request a new feature? Please let us know by submitting an issue.
-
-### Contributing
-
-Esri Canada welcomes contributions from anyone and everyone on this open source project. Please see our [guidelines](../master/Contributing.md) in the repository before contributing.
-
+---
 ### Licensing
 Copyright 2013 Esri
 
